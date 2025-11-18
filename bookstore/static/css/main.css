@@ -2,6 +2,7 @@
 
 body {
     max-width: 1160px;
+    margin: 0 auto; 
     font: 1em normal Arial, sans-serif;
     color: #111111;
 }
@@ -62,6 +63,11 @@ header {
 .dropdownContent a:hover {
     color: #00aacc;
     text-decoration: none;
+}
+
+#leftHeader img {
+    height: 80px;  
+    width: auto;
 }
 
 /* rules for the right header */
@@ -307,3 +313,17 @@ h1{
     font-size: 0.875em;
     text-decoration: none;
 }
+
+.category img {
+    width: 160px;     
+    height: auto;    
+    border-radius: 8px;
+}
+
+.book img {
+    width: 150px;   
+    height: auto;
+    object-fit: cover;  
+    border-radius: 5px;
+}
+

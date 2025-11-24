@@ -1,18 +1,13 @@
 /* Styles used on multiple pages */
 
-/* ===========================
-   Global layout & background
-   =========================== */
+/* ===== Global layout & background ===== */
 
 body {
     max-width: 1160px;
     margin: 0 auto;
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #0f172a;
-
-    /* 你的渐变背景图 */
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1em;
+    color: #111111;
     background-image: url('/static/images/misc/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -20,43 +15,19 @@ body {
     background-position: center;
 }
 
-/* 顶部整体卡片 & 内容区域整体卡片：半透明玻璃感 */
-
-header,
-main,
-footer {
-    background-color: rgba(255, 255, 255, 0.35);
-    backdrop-filter: blur(10px);
-}
-
-/* main 本身再稍微透明一点，看起来像嵌在大卡片里的内容 */
-main {
-    display: flex;
-    margin: 5px 0 0 10px;
-    border-top: 1px solid rgba(15, 23, 42, 0.10);
-    border-left: 1px solid rgba(15, 23, 42, 0.10);
-    border-right: 1px solid rgba(15, 23, 42, 0.10);
-    background-color: rgba(255, 255, 255, 0.28);
-    border-radius: 18px 18px 0 0;
-}
-
-/* ===========================
-   Header
-   =========================== */
+/* ===== Header ===== */
 
 header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-left: 10px;
-    padding: 18px 24px 12px;
-    border-radius: 24px 24px 0 0;
-    border: 1px solid rgba(15, 23, 42, 0.10);
-    border-bottom: none;
-    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.15);
+    padding: 18px 18px 10px 12px;
+    background-color: rgba(248, 250, 252, 0.90);   /* 半透明 */
+    backdrop-filter: blur(6px);
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.22);
 }
-
-/* 左侧：logo + 标题 */
 
 #leftHeader {
     display: flex;
@@ -65,88 +36,78 @@ header {
 }
 
 #leftHeader img {
-    height: 42px;
+    height: 64px;
     width: auto;
 }
 
 #siteTitle {
     margin: 0;
-    font-family: 'Averia Serif Libre', serif;
-    font-size: 1.7rem;
+    font-family: 'Averia Serif Libre', Georgia, 'Times New Roman', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
     color: #0b1f4a;
 }
 
-/* 中间：搜索 + 下拉 */
-
-#midHeader {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-/* 搜索框 */
+/* center header: search + dropdown */
 
 #searchBoxForm {
-    margin-top: 0;
+    margin-top: 20px;
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
 #searchBox {
-    height: 36px;
+    height: 32px;
     width: 260px;
-    padding: 0 12px;
+    padding: 4px 10px;
     border-radius: 999px;
-    border: 1px solid rgba(148, 163, 184, 0.8);
-    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.9);
     outline: none;
-    font-size: 0.9rem;
+    font-size: 0.9em;
 }
 
 #searchBox:focus {
     border-color: #2563eb;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
 }
 
 #searchIcon {
-    height: 20px;
-    width: 20px;
+    height: 24px;
+    width: 24px;
 }
 
-/* 下拉选择分类 */
+/* dropdown */
 
 .dropdown {
     position: relative;
     display: inline-block;
-    margin-top: 4px;
+    margin-top: 14px;
 }
 
 .dropdownSelect {
-    width: 200px;
-    padding: 8px 12px;
+    width: 189px;
+    padding: 7px 5px;
     background: linear-gradient(135deg, #2563eb, #4f46e5);
     color: white;
     text-align: center;
     display: block;
     border-radius: 999px;
-    font-size: 0.9rem;
+    font-size: 0.9em;
     letter-spacing: 0.3px;
     cursor: pointer;
-    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
 }
 
 .dropdownContent {
     display: none;
     position: absolute;
     min-width: 200px;
-    padding: 6px 0;
-    z-index: 10;
-    border-radius: 14px;
-    background-color: rgba(15, 23, 42, 0.95);
+    padding-top: 5px;
+    z-index: 20;
+    border-radius: 12px;
+    background-color: #1d4ed8;
     text-align: center;
-    box-shadow: 0 12px 25px rgba(15, 23, 42, 0.4);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.25);
 }
 
 .dropdown:hover .dropdownContent {
@@ -159,131 +120,108 @@ header {
 }
 
 .dropdownContent a {
-    color: #e5e7eb;
+    color: white;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.9em;
 }
 
 .dropdownContent a:hover {
     color: #bfdbfe;
 }
 
-/* 右侧：购物车 + 登录 */
+/* right header */
 
 #rightHeader {
     display: flex;
+    margin-top: 26px;
     align-items: center;
     gap: 12px;
-    margin-top: 4px;
 }
 
 #cartIcon img {
     height: 24px;
-    width: 24px;
+    width: auto;
 }
 
-#cartCount {
-    width: auto;
-    margin: 0;
-    font-size: 0.9rem;
+#cartCount{
+    width: 80px;
+    margin-top: 3px;
+    font-size: 0.85em;
     color: #0f172a;
 }
 
 .loginButton {
     background-color: #020617;
-    padding: 6px 16px;
-    border-radius: 999px;
+    width: 70px;
+    height: 32px;
+    margin-top: 0;
     text-align: center;
-    line-height: 1;
-    font-size: 0.85rem;
+    line-height: 32px;
+    border-radius: 999px;
+    font-size: 0.85em;
 }
 
-.loginButton a {
+.loginButton a{
     color: white;
     text-decoration: none;
 }
-
-.loginButton:hover {
-    background-color: #111827;
-}
-
 .loginButton a:hover {
     color: #bfdbfe;
 }
 
-/* ===========================
-   Footer
-   =========================== */
+/* ===== Footer ===== */
 
 footer {
     display: flex;
     justify-content: space-between;
     border: 1px solid rgba(15, 23, 42, 0.10);
-    border-top: none;
     margin-left: 10px;
-    padding: 15px 24px;
+    padding: 15px 20px;
     font-size: 0.8em;
-    border-radius: 0 0 24px 24px;
-    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.15);
+    background-color: rgba(248, 250, 252, 0.92);
+    backdrop-filter: blur(6px);
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 -10px 28px rgba(15, 23, 42, 0.16);
 }
 
 #footerLeft {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 340px;
+    width: 320px;
+    gap: 12px;
 }
 
-#footerLeft p {
-    margin: 0;
-}
-
-#footerLeft a {
-    padding-top: 0;
-    color: #1d4ed8;
-    text-decoration: none;
-    font-size: 0.8rem;
-}
-
-#footerLeft a:hover {
-    text-decoration: underline;
+#footerLeft a{
+    padding-top: 2px;
 }
 
 #footerRight {
     display: flex;
     justify-content: space-between;
-    gap: 12px;
-}
-
-#footerRight img {
-    height: 18px;
-    width: 18px;
+    width: 80px;
 }
 
 #notFoundMessage {
     color: #b91c1c;
 }
 
-/* 通用按钮 */
-
 .commandButton {
     height: 30px;
     width: 150px;
-    border-radius: 999px;
+    border-radius: 8px;
     margin: 20px;
     text-align: center;
     line-height: 30px;
     background: linear-gradient(135deg, #2563eb, #4f46e5);
-    font-size: 0.85rem;
+    font-size: smaller;
     color: white;
     text-decoration: none;
     display: block;
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
 }
 
 .submitButton {
-    height: 28px;
-    padding: 0 12px;
+    height: 18px;
     border-radius: 999px;
     border: none;
     margin: 6px 0 0 4px;
@@ -292,86 +230,79 @@ footer {
     color: white;
     font-size: 0.875em;
     text-decoration: none;
-    cursor: pointer;
 }
 
-.submitButton:hover {
-    background-color: #1d4ed8;
+/* ===== Main layout (outer “cards”) ===== */
+
+main {
+    display: flex;
+    margin: 18px 0 18px 10px;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    border-left: 1px solid rgba(15, 23, 42, 0.08);
+    border-right: 1px solid rgba(15, 23, 42, 0.08);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 24px;
+    background: radial-gradient(circle at top, rgba(248, 250, 252, 0.96), rgba(226, 232, 240, 0.85));
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
 }
 
-/* ===========================
-   Shared typography
-   =========================== */
-
-h1 {
+h1{
     font-size: 1.6em;
-    font-family: 'Averia Serif Libre', serif;
+    font-family: 'Averia Serif Libre', Georgia, 'Times New Roman', serif;
     font-weight: 700;
     color: #0b1f4a;
 }
 
-/* ===========================
-   Index (home) page
-   =========================== */
+/* ===== Index page ===== */
 
-/* 左侧欢迎区域 */
-
+/* 左侧欢迎文本 */
 #mainLeft {
-    width: 50%;
-    padding: 32px 40px;
+    width: 550px;
+    padding: 28px 0 32px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     text-align: left;
-    background-color: rgba(255, 255, 255, 0.38);
-    border-radius: 18px 0 0 18px;
 }
 
-#mainLeft h1 {
-    margin-bottom: 16px;
+#mainLeft p{
+    font-size: 110%;
+    line-height: 1.5;
+    color: #0f172a;
 }
 
-#mainLeft p {
-    font-size: 0.98rem;
-    margin: 6px 0;
+.welcomeText {
+    max-width: 420px;
 }
 
-/* 右侧分类区域 */
-
+/* 右侧分类区 */
 #mainRight {
-    width: 50%;
-    border-left: 1px solid rgba(15, 23, 42, 0.10);
-    padding: 24px 32px 32px;
-    background-color: rgba(238, 243, 255, 0.35);
+    max-width: 600px;
+    border-left: 1px solid rgba(148, 163, 184, 0.4);
+    padding: 20px 0 28px;
+    background-color: rgba(239, 246, 255, 0.92);
     text-align: center;
-    border-radius: 0 18px 18px 0;
-}
-
-#mainRight h1 {
-    margin-top: 0;
-    margin-bottom: 18px;
 }
 
 #categorySelections {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px;
 }
 
 .category {
-    width: 180px;
-    padding: 12px 10px 18px;
+    width: 299px;
+    margin-top: 20px;
     text-align: center;
+    line-height: 40px;
     color: #1d4ed8;
     font-weight: bold;
 }
 
-.category a {
-    font-family: 'Averia Serif Libre', serif;
+.category a{
     text-decoration: none;
     color: #1d4ed8;
-    font-size: 0.95rem;
+    font-family: 'Averia Serif Libre', serif;
 }
 
 .category a:hover {
@@ -379,106 +310,92 @@ h1 {
 }
 
 .category img {
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: auto;
     border-radius: 18px;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
-    display: block;
-    margin: 8px auto 0;
-    object-fit: contain;
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
 }
 
-/* ===========================
-   Category page
-   =========================== */
+/* ===== Category page ===== */
 
 /* 左侧分类按钮 */
 
 #catLeft {
-    width: 260px;
-    border-right: 1px solid rgba(15, 23, 42, 0.10);
+    width: 500px;
+    border-right: 1px solid rgba(148, 163, 184, 0.4);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 16px;
-    gap: 10px;
+    justify-content: center;
+    padding: 30px 0;
 }
-
-.notSelectedCategory,
-.selectedCategory {
-    height: 36px;
-    width: 180px;
-    border-radius: 999px;
-    margin: 6px 0;
-    text-align: center;
-    line-height: 36px;
-    font-size: 0.9rem;
-}
-
-/* 未选中：实心蓝按钮 */
 
 .notSelectedCategory {
+    height: 34px;
+    width: 160px;
+    border-radius: 999px;
+    margin: 18px;
+    text-align: center;
+    line-height: 34px;
     background: linear-gradient(135deg, #2563eb, #4f46e5);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
 }
 
-.notSelectedCategory a {
+.notSelectedCategory a{
     color: white;
-    font-family: 'Averia Serif Libre', serif;
-    font-size: 0.9rem;
+    font-size: 0.9em;
     text-decoration: none;
 }
 
-/* 选中：白底蓝边 */
+.notSelectedCategory a:hover {
+    color: #bfdbfe;
+}
 
 .selectedCategory {
+    height: 34px;
+    width: 160px;
     border: 1px solid #2563eb;
+    border-radius: 999px;
+    margin: 18px;
+    text-align: center;
+    line-height: 34px;
     color: #2563eb;
-    background-color: rgba(255, 255, 255, 0.9);
-    font-family: 'Averia Serif Libre', serif;
+    font-size: 0.9em;
+    background-color: rgba(248, 250, 252, 0.9);
 }
 
-/* 右侧书列表：两列布局 */
+/* 右侧书籍列表：保持老师的两列布局 */
 
 #catRight {
-    flex: 1;
-    padding: 24px 32px 32px;
-    box-shadow: inset 0 0 0 18px rgba(238, 243, 255, 0.4);
+    padding: 20px 20px 20px 30px;
+    box-shadow: inset 0 0 0 20px rgba(239, 246, 255, 0.9);
     display: flex;
-    flex-wrap: wrap;
-    background-color: rgba(238, 243, 255, 0.35);
-    gap: 24px;
+    flex-wrap: wrap;      /* 关键：允许换行 */
+    background-color: rgba(239, 246, 255, 0.92);
 }
 
-/* 书卡片：两列排布 */
+/* 每本书一张卡片：固定宽度，这样一行可以排两个 */
 
 .book {
-    width: calc(50% - 24px);
+    width: 350px;        /* 关键：不要用 100% / auto，否则会只显示一列 */
+    margin: 30px;
     display: flex;
-    padding: 18px 18px 16px;
-    background-color: rgba(255, 255, 255, 0.55);
-    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.15);
-    border-radius: 16px;
-}
-
-/* 尺寸不够时自动变成一列（例如浏览器很窄时） */
-@media (max-width: 900px) {
-    .book {
-        width: 100%;
-    }
+    background-color: rgba(248, 250, 252, 0.98);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+    border-radius: 18px;
 }
 
 .book img {
-    width: 110px;
-    height: 160px;
+    width: 150px;
+    height: auto;
     object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.35);
+    border-radius: 14px;
+    margin: 16px 0 16px 16px;
 }
 
+/* 书本信息区域 */
+
 .bookDetailBox {
-    margin: 4px 0 0 18px;
+    margin: 18px 18px 18px 20px;
     display: flex;
     flex-direction: column;
     font-size: 0.875em;
@@ -491,46 +408,32 @@ h1 {
 }
 
 .bookDetail {
-    margin-top: 3px;
-    font-size: 0.83rem;
-    color: #4b5563;
+    margin-top: 4px;
+    font-size: 0.9em;
+    color: #1e293b;
 }
 
 .bookPrice {
-    margin-top: 6px;
-    font-weight: 700;
+    margin-top: 8px;
+    font-weight: bold;
     color: #1d4ed8;
-    font-size: 0.9rem;
 }
 
-/* 操作按钮：蓝色 pill 形 */
+/* 按钮 */
 
 .actionButton {
-    height: 26px;
-    width: 120px;
+    height: 22px;
+    width: 90px;
     border-radius: 999px;
     margin-top: 6px;
-    line-height: 26px;
+    line-height: 22px;
     text-align: center;
     background: linear-gradient(135deg, #2563eb, #4f46e5);
     color: white;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 0.3px;
-    font-size: 0.8rem;
+    font-size: 0.8em;
     text-decoration: none;
-    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
-}
-
-.actionButton + .actionButton {
-    margin-left: 4px;
 }
 
 .actionButton:hover {
     background: linear-gradient(135deg, #1d4ed8, #4338ca);
 }
-
-
-#notFoundMessage {
-    color: #b91c1c;
-}
-

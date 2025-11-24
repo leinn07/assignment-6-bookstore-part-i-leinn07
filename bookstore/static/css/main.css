@@ -1,143 +1,118 @@
 /* Styles used on multiple pages */
 
-/* ========== Global layout & background ========== */
+/* ============================
+   Global / Layout
+   ============================ */
 
-html {
-    min-height: 100%;
-    /* 用你的背景图做全屏背景 */
-    background-image: url('../images/misc/back.jpg');
+body {
+    max-width: 1160px;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+    color: #111111;
+
+    /* 背景图 */
+    background-image: url('../images/misc/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
 }
 
-body {
-    max-width: 1160px;
-    margin: 24px auto;
-    padding: 0;
-    background: rgba(255, 255, 255, 0.96);
-    border-radius: 18px;
-    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
-
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 16px;
-    color: #0f172a;
-}
-
-/* 去掉旧的左右 margin 带来的偏移 */
-main {
-    display: flex;
-    margin: 0;
-    padding: 0 24px 24px;
-    border: none;
-}
-
-/* 标题基础样式 */
-h1 {
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: #0b1f4a;
-    margin: 0 0 12px;
-}
-
-/* ========== Header ========== */
+/* Header */
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 0;
-    padding: 16px 24px 12px;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.4);
-    background-color: transparent;
+    margin: 24px 10px 16px 10px;
+    padding: 18px 24px;
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(8px);
+    border-radius: 24px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
 }
 
-/* 左侧 logo + site title */
 #leftHeader {
     display: flex;
     align-items: center;
-    gap: 12px;
 }
 
 #leftHeader img {
     height: 56px;
     width: auto;
-    border-radius: 8px;
 }
 
 #siteTitle {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #0b1f4a;
+    margin-left: 12px;
+    font-family: 'Averia Serif Libre', serif;
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+    color: #020617;
 }
 
-/* 中间：搜索 + 下拉 */
-#midHeader {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-}
+/* Center header: search + dropdown */
 
-/* 搜索框 */
 #searchBoxForm {
-    margin-top: 0;
+    margin-top: 4px;
     display: flex;
     align-items: center;
-    gap: 8px;
 }
 
 #searchBox {
-    height: 32px;
-    padding: 4px 10px;
+    height: 36px;
+    padding: 0 12px;
     border-radius: 999px;
-    border: 1px solid #cbd5f5;
-    min-width: 220px;
+    border: 1px solid #e5e7eb;
     font-size: 0.9rem;
+    outline: none;
+    min-width: 260px;
 }
 
 #searchBox:focus {
-    outline: none;
     border-color: #2563eb;
-    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.35);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
 #searchIcon {
-    height: 32px;
-    width: 32px;
+    margin-left: 8px;
+    height: 22px;
+    width: 22px;
 }
 
-/* 下拉菜单 */
+/* Dropdown */
+
 .dropdown {
     position: relative;
     display: inline-block;
-    margin-top: 4px;
+    margin-top: 12px;
 }
 
 .dropdownSelect {
     width: 189px;
-    padding: 6px 10px;
-    background-color: #2563eb;
+    padding: 8px 16px;
+    background: linear-gradient(90deg, #2563eb, #4f46e5);
     color: white;
     text-align: center;
     display: block;
     border-radius: 999px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.3px;
     font-size: 0.9rem;
     cursor: pointer;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
 }
 
 .dropdownContent {
     display: none;
     position: absolute;
-    min-width: 210px;
-    padding: 8px 0;
+    min-width: 200px;
+    padding: 6px 0 10px 0;
+    z-index: 1;
+    border-radius: 14px;
+    background-color: #2563eb;
+    text-align: center;
     margin-top: 6px;
-    z-index: 10;
-    border-radius: 12px;
-    background-color: white;
-    text-align: left;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.35);
 }
 
 .dropdown:hover .dropdownContent {
@@ -146,83 +121,87 @@ header {
 
 .dropdownContent p {
     margin: 0;
+    padding: 6px 0;
 }
 
 .dropdownContent a {
-    display: block;
-    padding: 6px 14px;
-    color: #0f172a;
+    color: white;
     text-decoration: none;
     font-size: 0.9rem;
 }
 
 .dropdownContent a:hover {
-    background-color: #eff6ff;
-    color: #1d4ed8;
+    color: #bfdbfe;
 }
 
-/* 右侧：购物车 + 登录 */
+/* Right header */
+
 #rightHeader {
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin-top: 0;
+    gap: 16px;
 }
 
 #cartIcon img {
-    height: 28px;
+    height: 24px;
     width: auto;
 }
 
 #cartCount {
+    width: auto;
+    margin: 0;
     font-size: 0.85rem;
-    color: #475569;
 }
 
 .loginButton {
-    background-color: #111827;
-    padding: 6px 14px;
-    border-radius: 999px;
+    background-color: #020617;
+    padding: 6px 16px;
     text-align: center;
+    border-radius: 999px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.3px;
+    font-size: 0.85rem;
 }
 
 .loginButton a {
     color: white;
     text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 500;
 }
 
 .loginButton a:hover {
     color: #bfdbfe;
 }
 
-/* ========== Footer ========== */
+/* Footer */
 
 footer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border: none;
-    margin-left: 0;
-    padding: 10px 24px 16px;
-    font-size: 0.8rem;
-    color: #64748b;
-    border-top: 1px solid rgba(148, 163, 184, 0.4);
-    background-color: transparent;
+    margin: 16px 10px 32px 10px;
+    padding: 12px 24px;
+    font-size: 0.8em;
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(6px);
+    border-radius: 18px;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.2);
 }
 
 #footerLeft {
     display: flex;
     align-items: center;
     gap: 16px;
+}
+
+#footerLeft p {
     margin: 0;
-    width: auto;
 }
 
 #footerLeft a {
     padding-top: 0;
-    color: #2563eb;
     text-decoration: none;
+    color: #2563eb;
 }
 
 #footerLeft a:hover {
@@ -232,50 +211,77 @@ footer {
 #footerRight {
     display: flex;
     justify-content: space-between;
-    margin-right: 0;
-    width: 60px;
+    margin-right: 10px;
+    width: 80px;
 }
 
-/* 错误信息 */
+#footerRight img {
+    height: 20px;
+    width: 20px;
+}
+
 #notFoundMessage {
     color: #b91c1c;
 }
 
-/* 通用按钮（不含 Add to cart 那些） */
+/* Buttons */
+
 .commandButton {
     height: 30px;
     width: 150px;
-    border-radius: 999px;
+    border-radius: 8px;
     margin: 20px;
     text-align: center;
     line-height: 30px;
     background-color: #2563eb;
-    font-size: 0.85rem;
+    font-size: smaller;
     color: white;
     text-decoration: none;
-    display: inline-block;
+    display: block;
 }
 
 .submitButton {
-    height: 26px;
+    height: 32px;
     border-radius: 999px;
     border: none;
     margin: 6px 0 0 4px;
-    padding: 0 12px;
+    padding: 0 14px;
     text-align: center;
     background-color: #2563eb;
     color: white;
-    font-size: 0.85rem;
+    font-size: 0.875em;
     text-decoration: none;
     cursor: pointer;
 }
 
-/* ========== Index page ========== */
+/* Main wrapper card */
 
-/* 左侧欢迎文字 */
+main {
+    display: flex;
+    margin: 24px 10px 40px 10px;
+    padding: 24px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.25);
+}
+
+h1 {
+    font-size: 1.6em;
+    font-family: 'Averia Serif Libre', serif;
+    font-weight: 700;
+    color: #0b1f4a;
+}
+
+/* ============================
+   Index page
+   ============================ */
+
+/* Left welcome panel */
+
 #mainLeft {
     width: 50%;
-    padding: 24px 16px 24px 0;
+    padding: 20px 30px 20px 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -283,99 +289,106 @@ footer {
 }
 
 #mainLeft h1 {
-    margin-bottom: 10px;
+    margin-bottom: 18px;
 }
 
 #mainLeft p {
-    font-size: 0.98rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
     line-height: 1.6;
     margin: 4px 0;
-    color: #334155;
 }
 
 .welcomeText {
-    max-width: 430px;
+    max-width: 420px;
 }
 
-/* 右侧分类区域 */
+/* Right category grid */
+
 #mainRight {
-    width: 50%;
-    border-left: 1px solid rgba(148, 163, 184, 0.35);
-    padding: 24px 0 24px 24px;
-    background-color: #f8fafc;
+    max-width: 50%;
+    border-left: 1px solid rgba(15, 23, 42, 0.08);
+    padding: 20px 10px 20px 30px;
+    background-color: #eef3ff;
     text-align: left;
 }
 
 #mainRight h1 {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 #categorySelections {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px 10px;
+    gap: 20px;
 }
 
 .category {
-    width: calc(50% - 8px);
-    margin-top: 4px;
-    text-align: left;
+    width: 210px;
+    text-align: center;
+    line-height: 40px;
     color: #1d4ed8;
-    font-weight: 500;
+    font-weight: bold;
 }
 
 .category a {
+    font-family: 'Averia Serif Libre', serif;
     text-decoration: none;
     color: #1d4ed8;
-    font-size: 0.95rem;
 }
 
 .category a:hover {
     color: #0f766e;
 }
 
-/* 分类图片 */
 .category img {
-    display: block;
-    width: 100%;
-    max-width: 170px;
+    width: 160px;
     height: auto;
-    border-radius: 12px;
-    margin-top: 4px;
-    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.25);
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
 }
 
-/* ========== Category page ========== */
+/* ============================
+   Category page
+   ============================ */
 
-/* 左侧：分类按钮列表 */
+/* Left side category buttons */
+
 #catLeft {
-    width: 32%;
-    border-right: 1px solid rgba(148, 163, 184, 0.35);
+    width: 260px;
+    font-family: 'Inter', sans-serif;
+    border-right: 1px solid rgba(15, 23, 42, 0.08);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 24px 0;
-    gap: 8px;
+    justify-content: flex-start;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    gap: 12px;
 }
 
 .notSelectedCategory,
 .selectedCategory {
-    height: 32px;
-    width: 170px;
+    height: 36px;
+    width: 180px;
     border-radius: 999px;
-    margin: 8px 0;
+    margin: 6px 0;
     text-align: center;
-    line-height: 32px;
-    font-size: 0.85rem;
+    line-height: 36px;
+    font-size: 0.9rem;
 }
 
-/* 未选中：实心按钮 */
+/* 非选中按钮 */
+
 .notSelectedCategory {
     background-color: #2563eb;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.45);
 }
 
 .notSelectedCategory a {
     color: white;
+    font-family: 'Averia Serif Libre', serif;
+    font-size: 0.9rem;
     text-decoration: none;
 }
 
@@ -383,87 +396,97 @@ footer {
     color: #bfdbfe;
 }
 
-/* 已选中：描边 pill */
+/* 选中按钮 */
+
 .selectedCategory {
+    font-family: 'Averia Serif Libre', serif;
     border: 1px solid #2563eb;
     color: #2563eb;
     background-color: white;
 }
 
-/* 右侧：书列表 */
+/* Right side: book cards */
+
 #catRight {
-    width: 68%;
-    padding: 24px 24px 24px 24px;
-    box-shadow: inset 0 0 0 16px #f8fafc;
+    flex: 1;
+    padding: 30px 24px 30px 30px;
+    box-shadow: inset 0 0 0 20px #eef3ff;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    background-color: #f8fafc;
+    gap: 24px;
+    background-color: #eef3ff;
 }
 
-/* 单本书卡片 */
+/* 一行两本书：flex-basis 50% */
+
 .book {
-    width: 100%;
-    max-width: 380px;
+    flex: 0 1 calc(50% - 40px);
+    margin: 0;
     display: flex;
-    gap: 16px;
+    align-items: flex-start;
     background-color: white;
-    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18);
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
     border-radius: 14px;
-    padding: 14px;
+    padding: 16px;
 }
 
 .book img {
-    width: 110px;
-    height: 150px;
+    width: 120px;
+    height: auto;
     object-fit: cover;
     border-radius: 10px;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.22);
 }
 
-/* 右边文字信息 */
+/* Book details */
+
 .bookDetailBox {
-    flex: 1;
-    margin: 4px 0 0 0;
+    margin: 8px 0 0 18px;
     display: flex;
     flex-direction: column;
-    font-size: 0.85rem;
+    font-size: 0.875em;
 }
 
 .bookTitle {
-    font-weight: 600;
+    font-weight: bold;
     color: #0b1f4a;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 .bookDetail {
-    margin-top: 3px;
-    font-size: 0.82rem;
-    color: #4b5563;
+    margin-top: 2px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875em;
 }
 
 .bookPrice {
     margin-top: 6px;
-    font-weight: 600;
+    font-weight: bold;
     color: #1d4ed8;
 }
 
-/* 书卡片里的按钮 */
+/* 主要操作按钮 */
+
 .actionButton {
     height: 24px;
-    padding: 0 10px;
+    width: 110px;
     border-radius: 999px;
     margin-top: 6px;
     line-height: 24px;
     text-align: center;
-    background-color: #2563eb;
+    background: linear-gradient(90deg, #2563eb, #4f46e5);
     color: white;
-    font-size: 0.78rem;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.3px;
+    font-size: 0.8rem;
     text-decoration: none;
-    display: inline-block;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
 }
 
 .actionButton:hover {
-    background-color: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+    opacity: 0.96;
 }
 
 

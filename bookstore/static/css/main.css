@@ -1,118 +1,152 @@
 /* Styles used on multiple pages */
 
-/* ============================
-   Global / Layout
-   ============================ */
+/* ===========================
+   Global layout & background
+   =========================== */
 
 body {
     max-width: 1160px;
     margin: 0 auto;
-    font-family: 'Inter', sans-serif;
-    color: #111111;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #0f172a;
 
-    /* 背景图 */
-    background-image: url('../images/misc/background.jpg');
+    /* 你的渐变背景图 */
+    background-image: url('/static/images/misc/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
 }
 
-/* Header */
+/* 顶部整体卡片 & 内容区域整体卡片：半透明玻璃感 */
+
+header,
+main,
+footer {
+    background-color: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(10px);
+}
+
+/* main 本身再稍微透明一点，看起来像嵌在大卡片里的内容 */
+main {
+    display: flex;
+    margin: 5px 0 0 10px;
+    border-top: 1px solid rgba(15, 23, 42, 0.10);
+    border-left: 1px solid rgba(15, 23, 42, 0.10);
+    border-right: 1px solid rgba(15, 23, 42, 0.10);
+    background-color: rgba(255, 255, 255, 0.28);
+    border-radius: 18px 18px 0 0;
+}
+
+/* ===========================
+   Header
+   =========================== */
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 24px 10px 16px 10px;
-    padding: 18px 24px;
-    background-color: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(8px);
-    border-radius: 24px;
-    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+    margin-left: 10px;
+    padding: 18px 24px 12px;
+    border-radius: 24px 24px 0 0;
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    border-bottom: none;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.15);
 }
+
+/* 左侧：logo + 标题 */
 
 #leftHeader {
     display: flex;
     align-items: center;
+    gap: 12px;
 }
 
 #leftHeader img {
-    height: 56px;
+    height: 42px;
     width: auto;
 }
 
 #siteTitle {
-    margin-left: 12px;
+    margin: 0;
     font-family: 'Averia Serif Libre', serif;
-    font-size: 2rem;
-    letter-spacing: 0.04em;
-    color: #020617;
+    font-size: 1.7rem;
+    color: #0b1f4a;
 }
 
-/* Center header: search + dropdown */
+/* 中间：搜索 + 下拉 */
+
+#midHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 搜索框 */
 
 #searchBoxForm {
-    margin-top: 4px;
+    margin-top: 0;
     display: flex;
     align-items: center;
+    gap: 6px;
 }
 
 #searchBox {
     height: 36px;
+    width: 260px;
     padding: 0 12px;
     border-radius: 999px;
-    border: 1px solid #e5e7eb;
-    font-size: 0.9rem;
+    border: 1px solid rgba(148, 163, 184, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
     outline: none;
-    min-width: 260px;
+    font-size: 0.9rem;
 }
 
 #searchBox:focus {
     border-color: #2563eb;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
 }
 
 #searchIcon {
-    margin-left: 8px;
-    height: 22px;
-    width: 22px;
+    height: 20px;
+    width: 20px;
 }
 
-/* Dropdown */
+/* 下拉选择分类 */
 
 .dropdown {
     position: relative;
     display: inline-block;
-    margin-top: 12px;
+    margin-top: 4px;
 }
 
 .dropdownSelect {
-    width: 189px;
-    padding: 8px 16px;
-    background: linear-gradient(90deg, #2563eb, #4f46e5);
+    width: 200px;
+    padding: 8px 12px;
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
     color: white;
     text-align: center;
     display: block;
     border-radius: 999px;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 0.3px;
     font-size: 0.9rem;
+    letter-spacing: 0.3px;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
 }
 
 .dropdownContent {
     display: none;
     position: absolute;
     min-width: 200px;
-    padding: 6px 0 10px 0;
-    z-index: 1;
+    padding: 6px 0;
+    z-index: 10;
     border-radius: 14px;
-    background-color: #2563eb;
+    background-color: rgba(15, 23, 42, 0.95);
     text-align: center;
-    margin-top: 6px;
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.35);
+    box-shadow: 0 12px 25px rgba(15, 23, 42, 0.4);
 }
 
 .dropdown:hover .dropdownContent {
@@ -125,7 +159,7 @@ header {
 }
 
 .dropdownContent a {
-    color: white;
+    color: #e5e7eb;
     text-decoration: none;
     font-size: 0.9rem;
 }
@@ -134,32 +168,33 @@ header {
     color: #bfdbfe;
 }
 
-/* Right header */
+/* 右侧：购物车 + 登录 */
 
 #rightHeader {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
+    margin-top: 4px;
 }
 
 #cartIcon img {
     height: 24px;
-    width: auto;
+    width: 24px;
 }
 
 #cartCount {
     width: auto;
     margin: 0;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+    color: #0f172a;
 }
 
 .loginButton {
     background-color: #020617;
     padding: 6px 16px;
-    text-align: center;
     border-radius: 999px;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 0.3px;
+    text-align: center;
+    line-height: 1;
     font-size: 0.85rem;
 }
 
@@ -168,30 +203,35 @@ header {
     text-decoration: none;
 }
 
+.loginButton:hover {
+    background-color: #111827;
+}
+
 .loginButton a:hover {
     color: #bfdbfe;
 }
 
-/* Footer */
+/* ===========================
+   Footer
+   =========================== */
 
 footer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    border: none;
-    margin: 16px 10px 32px 10px;
-    padding: 12px 24px;
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    border-top: none;
+    margin-left: 10px;
+    padding: 15px 24px;
     font-size: 0.8em;
-    background-color: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(6px);
-    border-radius: 18px;
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.2);
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.15);
 }
 
 #footerLeft {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 16px;
+    width: 340px;
 }
 
 #footerLeft p {
@@ -200,8 +240,9 @@ footer {
 
 #footerLeft a {
     padding-top: 0;
+    color: #1d4ed8;
     text-decoration: none;
-    color: #2563eb;
+    font-size: 0.8rem;
 }
 
 #footerLeft a:hover {
@@ -211,41 +252,41 @@ footer {
 #footerRight {
     display: flex;
     justify-content: space-between;
-    margin-right: 10px;
-    width: 80px;
+    gap: 12px;
 }
 
 #footerRight img {
-    height: 20px;
-    width: 20px;
+    height: 18px;
+    width: 18px;
 }
 
 #notFoundMessage {
     color: #b91c1c;
 }
 
-/* Buttons */
+/* 通用按钮 */
 
 .commandButton {
     height: 30px;
     width: 150px;
-    border-radius: 8px;
+    border-radius: 999px;
     margin: 20px;
     text-align: center;
     line-height: 30px;
-    background-color: #2563eb;
-    font-size: smaller;
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    font-size: 0.85rem;
     color: white;
     text-decoration: none;
     display: block;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
 }
 
 .submitButton {
-    height: 32px;
+    height: 28px;
+    padding: 0 12px;
     border-radius: 999px;
     border: none;
     margin: 6px 0 0 4px;
-    padding: 0 14px;
     text-align: center;
     background-color: #2563eb;
     color: white;
@@ -254,17 +295,13 @@ footer {
     cursor: pointer;
 }
 
-/* Main wrapper card */
-
-main {
-    display: flex;
-    margin: 24px 10px 40px 10px;
-    padding: 24px;
-    border: none;
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 24px;
-    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.25);
+.submitButton:hover {
+    background-color: #1d4ed8;
 }
+
+/* ===========================
+   Shared typography
+   =========================== */
 
 h1 {
     font-size: 1.6em;
@@ -273,60 +310,59 @@ h1 {
     color: #0b1f4a;
 }
 
-/* ============================
-   Index page
-   ============================ */
+/* ===========================
+   Index (home) page
+   =========================== */
 
-/* Left welcome panel */
+/* 左侧欢迎区域 */
 
 #mainLeft {
     width: 50%;
-    padding: 20px 30px 20px 10px;
+    padding: 32px 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.38);
+    border-radius: 18px 0 0 18px;
 }
 
 #mainLeft h1 {
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 }
 
 #mainLeft p {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 4px 0;
+    font-size: 0.98rem;
+    margin: 6px 0;
 }
 
-.welcomeText {
-    max-width: 420px;
-}
-
-/* Right category grid */
+/* 右侧分类区域 */
 
 #mainRight {
-    max-width: 50%;
-    border-left: 1px solid rgba(15, 23, 42, 0.08);
-    padding: 20px 10px 20px 30px;
-    background-color: #eef3ff;
-    text-align: left;
+    width: 50%;
+    border-left: 1px solid rgba(15, 23, 42, 0.10);
+    padding: 24px 32px 32px;
+    background-color: rgba(238, 243, 255, 0.35);
+    text-align: center;
+    border-radius: 0 18px 18px 0;
 }
 
 #mainRight h1 {
-    margin-bottom: 14px;
+    margin-top: 0;
+    margin-bottom: 18px;
 }
 
 #categorySelections {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    justify-content: center;
+    gap: 24px;
 }
 
 .category {
-    width: 210px;
+    width: 180px;
+    padding: 12px 10px 18px;
     text-align: center;
-    line-height: 40px;
     color: #1d4ed8;
     font-weight: bold;
 }
@@ -335,6 +371,7 @@ h1 {
     font-family: 'Averia Serif Libre', serif;
     text-decoration: none;
     color: #1d4ed8;
+    font-size: 0.95rem;
 }
 
 .category a:hover {
@@ -342,29 +379,30 @@ h1 {
 }
 
 .category img {
-    width: 160px;
-    height: auto;
+    width: 140px;
+    height: 140px;
     border-radius: 18px;
-    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+    display: block;
+    margin: 8px auto 0;
+    object-fit: contain;
 }
 
-/* ============================
+/* ===========================
    Category page
-   ============================ */
+   =========================== */
 
-/* Left side category buttons */
+/* 左侧分类按钮 */
 
 #catLeft {
     width: 260px;
-    font-family: 'Inter', sans-serif;
-    border-right: 1px solid rgba(15, 23, 42, 0.08);
+    border-right: 1px solid rgba(15, 23, 42, 0.10);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    gap: 12px;
+    padding: 40px 16px;
+    gap: 10px;
 }
 
 .notSelectedCategory,
@@ -378,11 +416,11 @@ h1 {
     font-size: 0.9rem;
 }
 
-/* 非选中按钮 */
+/* 未选中：实心蓝按钮 */
 
 .notSelectedCategory {
-    background-color: #2563eb;
-    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.45);
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
 }
 
 .notSelectedCategory a {
@@ -392,53 +430,55 @@ h1 {
     text-decoration: none;
 }
 
-.notSelectedCategory a:hover {
-    color: #bfdbfe;
-}
-
-/* 选中按钮 */
+/* 选中：白底蓝边 */
 
 .selectedCategory {
-    font-family: 'Averia Serif Libre', serif;
     border: 1px solid #2563eb;
     color: #2563eb;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-family: 'Averia Serif Libre', serif;
 }
 
-/* Right side: book cards */
+/* 右侧书列表：两列布局 */
 
 #catRight {
-    padding: 24px 32px;
-    box-shadow: inset 0 0 0 20px #eef3ff;
+    flex: 1;
+    padding: 24px 32px 32px;
+    box-shadow: inset 0 0 0 18px rgba(238, 243, 255, 0.4);
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;                  /* 控制书本卡片之间的间距 */
-    background-color: #eef3ff;
+    background-color: rgba(238, 243, 255, 0.35);
+    gap: 24px;
 }
 
-/* 单本书卡片：宽度改小，让一行能放两个 */
+/* 书卡片：两列排布 */
+
 .book {
-    flex: 0 1 calc(50% - 32px); /* 一行两个（50% 减去一点空隙） */
-    max-width: 320px;           /* 防止过宽 */
+    width: calc(50% - 24px);
     display: flex;
-    background-color: white;
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
-    border-radius: 8px;
-    margin: 0;                  /* 间距交给 gap 管 */
+    padding: 18px 18px 16px;
+    background-color: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.15);
+    border-radius: 16px;
+}
+
+/* 尺寸不够时自动变成一列（例如浏览器很窄时） */
+@media (max-width: 900px) {
+    .book {
+        width: 100%;
+    }
 }
 
 .book img {
-    width: 120px;
-    height: auto;
+    width: 110px;
+    height: 160px;
     object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.22);
+    border-radius: 8px;
+    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.35);
 }
 
-/* Book details */
-
 .bookDetailBox {
-    margin: 8px 0 0 18px;
+    margin: 4px 0 0 18px;
     display: flex;
     flex-direction: column;
     font-size: 0.875em;
@@ -451,39 +491,42 @@ h1 {
 }
 
 .bookDetail {
-    margin-top: 2px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.875em;
+    margin-top: 3px;
+    font-size: 0.83rem;
+    color: #4b5563;
 }
 
 .bookPrice {
     margin-top: 6px;
-    font-weight: bold;
+    font-weight: 700;
     color: #1d4ed8;
+    font-size: 0.9rem;
 }
 
-/* 主要操作按钮 */
+/* 操作按钮：蓝色 pill 形 */
 
 .actionButton {
-    height: 24px;
-    width: 110px;
+    height: 26px;
+    width: 120px;
     border-radius: 999px;
     margin-top: 6px;
-    line-height: 24px;
+    line-height: 26px;
     text-align: center;
-    background: linear-gradient(90deg, #2563eb, #4f46e5);
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
     color: white;
     font-family: 'Inter', sans-serif;
     letter-spacing: 0.3px;
     font-size: 0.8rem;
     text-decoration: none;
-    transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
+}
+
+.actionButton + .actionButton {
+    margin-left: 4px;
 }
 
 .actionButton:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
-    opacity: 0.96;
+    background: linear-gradient(135deg, #1d4ed8, #4338ca);
 }
 
 

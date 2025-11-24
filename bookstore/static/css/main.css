@@ -1,16 +1,10 @@
 /* Styles used on multiple pages */
 
-/* =========================
-   Global layout & background
-   ========================= */
+/* ========== Global layout & background ========== */
 
-body {
-    max-width: 1160px;
-    margin: 0 auto;
-    color: #0f172a;
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-
-    /* 背景图：从 css/main.css 相对路径出发 */
+html {
+    min-height: 100%;
+    /* 用你的背景图做全屏背景 */
     background-image: url('../images/misc/back.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -18,36 +12,48 @@ body {
     background-position: center;
 }
 
-/* 让整个内容像一张卡片浮在背景上 */
-header,
-main,
-footer {
-    background-color: rgba(255, 255, 255, 0.95);
+body {
+    max-width: 1160px;
+    margin: 24px auto;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 18px;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
+
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    color: #0f172a;
 }
 
-/* 外框 & 轻微阴影让页面更现代 */
-header,
-main,
-footer {
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+/* 去掉旧的左右 margin 带来的偏移 */
+main {
+    display: flex;
+    margin: 0;
+    padding: 0 24px 24px;
+    border: none;
 }
 
-/* =========================
-   Header
-   ========================= */
+/* 标题基础样式 */
+h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #0b1f4a;
+    margin: 0 0 12px;
+}
+
+/* ========== Header ========== */
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 16px 10px 0 10px;
-    padding: 12px 20px;
-    border-radius: 16px 16px 0 0;
-    border: 1px solid rgba(148, 163, 184, 0.4);
-    backdrop-filter: blur(6px);
+    margin-left: 0;
+    padding: 16px 24px 12px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+    background-color: transparent;
 }
 
-/* 左侧 logo + 标题 */
+/* 左侧 logo + site title */
 #leftHeader {
     display: flex;
     align-items: center;
@@ -57,18 +63,16 @@ header {
 #leftHeader img {
     height: 56px;
     width: auto;
-    border-radius: 12px;
+    border-radius: 8px;
 }
 
 #siteTitle {
-    font-family: 'Averia Serif Libre', serif;
-    font-size: 1.7rem;
-    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
     color: #0b1f4a;
 }
 
-/* 中间 search + dropdown */
-
+/* 中间：搜索 + 下拉 */
 #midHeader {
     display: flex;
     flex-direction: column;
@@ -76,18 +80,27 @@ header {
     gap: 8px;
 }
 
+/* 搜索框 */
 #searchBoxForm {
+    margin-top: 0;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
 }
 
 #searchBox {
     height: 32px;
-    padding: 0 10px;
+    padding: 4px 10px;
     border-radius: 999px;
-    border: 1px solid rgba(148, 163, 184, 0.9);
+    border: 1px solid #cbd5f5;
+    min-width: 220px;
     font-size: 0.9rem;
+}
+
+#searchBox:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.35);
 }
 
 #searchIcon {
@@ -95,23 +108,21 @@ header {
     width: 32px;
 }
 
-/* Dropdown */
-
+/* 下拉菜单 */
 .dropdown {
     position: relative;
     display: inline-block;
+    margin-top: 4px;
 }
 
 .dropdownSelect {
-    width: 190px;
+    width: 189px;
     padding: 6px 10px;
     background-color: #2563eb;
     color: white;
     text-align: center;
     display: block;
     border-radius: 999px;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 0.3px;
     font-size: 0.9rem;
     cursor: pointer;
 }
@@ -119,14 +130,14 @@ header {
 .dropdownContent {
     display: none;
     position: absolute;
-    min-width: 200px;
-    margin-top: 4px;
-    padding: 6px 0;
+    min-width: 210px;
+    padding: 8px 0;
+    margin-top: 6px;
     z-index: 10;
     border-radius: 12px;
-    background-color: #1d4ed8;
+    background-color: white;
     text-align: left;
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
 }
 
 .dropdown:hover .dropdownContent {
@@ -140,26 +151,27 @@ header {
 .dropdownContent a {
     display: block;
     padding: 6px 14px;
-    color: white;
+    color: #0f172a;
     text-decoration: none;
     font-size: 0.9rem;
 }
 
 .dropdownContent a:hover {
-    background-color: #3b82f6;
+    background-color: #eff6ff;
+    color: #1d4ed8;
 }
 
-/* 右侧购物车 + 登录 */
-
+/* 右侧：购物车 + 登录 */
 #rightHeader {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
+    margin-top: 0;
 }
 
 #cartIcon img {
-    height: 32px;
-    width: 32px;
+    height: 28px;
+    width: auto;
 }
 
 #cartCount {
@@ -168,8 +180,8 @@ header {
 }
 
 .loginButton {
-    background-color: #2563eb;
-    padding: 4px 14px;
+    background-color: #111827;
+    padding: 6px 14px;
     border-radius: 999px;
     text-align: center;
 }
@@ -177,45 +189,40 @@ header {
 .loginButton a {
     color: white;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 500;
 }
 
 .loginButton a:hover {
-    color: #e0f2fe;
+    color: #bfdbfe;
 }
 
-/* =========================
-   Footer
-   ========================= */
+/* ========== Footer ========== */
 
 footer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin: 0 10px 16px 10px;
-    padding: 12px 20px;
-    border-radius: 0 0 16px 16px;
-    border: 1px solid rgba(148, 163, 184, 0.4);
-    font-size: 0.8em;
+    border: none;
+    margin-left: 0;
+    padding: 10px 24px 16px;
+    font-size: 0.8rem;
+    color: #64748b;
+    border-top: 1px solid rgba(148, 163, 184, 0.4);
+    background-color: transparent;
 }
 
 #footerLeft {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-left: 0;
-}
-
-#footerLeft p {
     margin: 0;
-    color: #64748b;
+    width: auto;
 }
 
 #footerLeft a {
     padding-top: 0;
     color: #2563eb;
     text-decoration: none;
-    font-size: 0.85rem;
 }
 
 #footerLeft a:hover {
@@ -226,80 +233,77 @@ footer {
     display: flex;
     justify-content: space-between;
     margin-right: 0;
-    width: 80px;
+    width: 60px;
 }
 
-#footerRight img {
-    height: 20px;
-    width: 20px;
+/* 错误信息 */
+#notFoundMessage {
+    color: #b91c1c;
 }
 
-/* =========================
-   Main container
-   ========================= */
-
-main {
-    display: flex;
-    margin: 0 10px;
-    border-left: 1px solid rgba(148, 163, 184, 0.4);
-    border-right: 1px solid rgba(148, 163, 184, 0.4);
-    border-top: 1px solid rgba(148, 163, 184, 0.4);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.4);
-    border-radius: 0;
+/* 通用按钮（不含 Add to cart 那些） */
+.commandButton {
+    height: 30px;
+    width: 150px;
+    border-radius: 999px;
+    margin: 20px;
+    text-align: center;
+    line-height: 30px;
+    background-color: #2563eb;
+    font-size: 0.85rem;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
 }
 
-/* 所有页面的主标题 */
-
-h1 {
-    font-size: 1.6em;
-    font-family: 'Averia Serif Libre', serif;
-    font-weight: 700;
-    color: #0b1f4a;
+.submitButton {
+    height: 26px;
+    border-radius: 999px;
+    border: none;
+    margin: 6px 0 0 4px;
+    padding: 0 12px;
+    text-align: center;
+    background-color: #2563eb;
+    color: white;
+    font-size: 0.85rem;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-/* 通用按钮 */
+/* ========== Index page ========== */
 
-.commandButton,
-.submitButton,
-.actionButton {
-    font-family: 'Inter', sans-serif;
-}
-
-/* =========================
-   Index page: left / right
-   ========================= */
-
-/* 左边欢迎区 */
-
+/* 左侧欢迎文字 */
 #mainLeft {
     width: 50%;
-    padding: 32px 24px;
+    padding: 24px 16px 24px 0;
     display: flex;
     flex-direction: column;
-    gap: 16px;
     justify-content: center;
     align-items: flex-start;
-    text-align: left;
+}
+
+#mainLeft h1 {
+    margin-bottom: 10px;
 }
 
 #mainLeft p {
-    font-size: 1rem;
+    font-size: 0.98rem;
     line-height: 1.6;
-    color: #475569;
+    margin: 4px 0;
+    color: #334155;
 }
 
 .welcomeText {
-    max-width: 420px;
+    max-width: 430px;
 }
 
-/* 右边分类区 */
-
+/* 右侧分类区域 */
 #mainRight {
     width: 50%;
-    border-left: 1px solid rgba(148, 163, 184, 0.4);
-    padding: 24px 24px 32px 24px;
+    border-left: 1px solid rgba(148, 163, 184, 0.35);
+    padding: 24px 0 24px 24px;
     background-color: #f8fafc;
-    text-align: center;
+    text-align: left;
 }
 
 #mainRight h1 {
@@ -309,142 +313,132 @@ h1 {
 #categorySelections {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-    margin-top: 12px;
+    gap: 16px 10px;
 }
 
 .category {
-    width: 46%;
-    background-color: white;
-    border-radius: 16px;
-    padding: 12px 8px 16px 8px;
-    text-align: center;
+    width: calc(50% - 8px);
+    margin-top: 4px;
+    text-align: left;
     color: #1d4ed8;
-    font-weight: 600;
-    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.category:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+    font-weight: 500;
 }
 
 .category a {
     text-decoration: none;
     color: #1d4ed8;
-    font-family: 'Averia Serif Libre', serif;
+    font-size: 0.95rem;
 }
 
+.category a:hover {
+    color: #0f766e;
+}
+
+/* 分类图片 */
 .category img {
-    width: 160px;
+    display: block;
+    width: 100%;
+    max-width: 170px;
     height: auto;
     border-radius: 12px;
     margin-top: 4px;
+    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.25);
 }
 
-/* =========================
-   Category page
-   ========================= */
+/* ========== Category page ========== */
 
-/* 左侧分类导航 */
-
+/* 左侧：分类按钮列表 */
 #catLeft {
-    width: 30%;
-    border-right: 1px solid rgba(148, 163, 184, 0.4);
+    width: 32%;
+    border-right: 1px solid rgba(148, 163, 184, 0.35);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 28px 12px;
+    padding: 24px 0;
     gap: 8px;
 }
 
 .notSelectedCategory,
 .selectedCategory {
     height: 32px;
-    width: 180px;
+    width: 170px;
     border-radius: 999px;
     margin: 8px 0;
     text-align: center;
     line-height: 32px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
-/* 未选中：蓝底白字 */
-
+/* 未选中：实心按钮 */
 .notSelectedCategory {
     background-color: #2563eb;
 }
 
 .notSelectedCategory a {
     color: white;
-    font-family: 'Averia Serif Libre', serif;
     text-decoration: none;
 }
 
 .notSelectedCategory a:hover {
-    color: #e0f2fe;
+    color: #bfdbfe;
 }
 
-/* 选中：白底蓝字 */
-
+/* 已选中：描边 pill */
 .selectedCategory {
-    font-family: 'Averia Serif Libre', serif;
     border: 1px solid #2563eb;
     color: #2563eb;
     background-color: white;
 }
 
-/* 右侧书列表 */
-
+/* 右侧：书列表 */
 #catRight {
-    width: 70%;
-    padding: 24px 24px 28px 24px;
+    width: 68%;
+    padding: 24px 24px 24px 24px;
+    box-shadow: inset 0 0 0 16px #f8fafc;
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 20px;
     background-color: #f8fafc;
-    box-shadow: inset 0 0 0 12px #f8fafc;
 }
 
+/* 单本书卡片 */
 .book {
-    width: calc(50% - 16px);
+    width: 100%;
+    max-width: 380px;
     display: flex;
+    gap: 16px;
     background-color: white;
-    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
-    border-radius: 16px;
-    overflow: hidden;
-    padding: 10px;
-    gap: 10px;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18);
+    border-radius: 14px;
+    padding: 14px;
 }
 
 .book img {
-    width: 90px;
-    height: 130px;
+    width: 110px;
+    height: 150px;
     object-fit: cover;
     border-radius: 10px;
 }
 
-/* 文字部分 */
-
+/* 右边文字信息 */
 .bookDetailBox {
+    flex: 1;
     margin: 4px 0 0 0;
     display: flex;
     flex-direction: column;
-    font-size: 0.85em;
+    font-size: 0.85rem;
 }
 
 .bookTitle {
-    font-family: 'Averia Serif Libre', serif;
-    font-weight: 700;
+    font-weight: 600;
     color: #0b1f4a;
+    margin-bottom: 2px;
 }
 
 .bookDetail {
-    margin-top: 4px;
-    font-size: 0.85em;
-    color: #64748b;
+    margin-top: 3px;
+    font-size: 0.82rem;
+    color: #4b5563;
 }
 
 .bookPrice {
@@ -453,8 +447,7 @@ h1 {
     color: #1d4ed8;
 }
 
-/* 按钮 */
-
+/* 书卡片里的按钮 */
 .actionButton {
     height: 24px;
     padding: 0 10px;
@@ -464,16 +457,15 @@ h1 {
     text-align: center;
     background-color: #2563eb;
     color: white;
-    font-size: 0.8em;
+    font-size: 0.78rem;
     text-decoration: none;
-    align-self: flex-start;
+    display: inline-block;
 }
 
 .actionButton:hover {
     background-color: #1d4ed8;
 }
 
-/* 错误提示颜色 */
 
 #notFoundMessage {
     color: #b91c1c;

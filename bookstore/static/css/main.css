@@ -1,127 +1,157 @@
 /* Styles used on multiple pages */
 
-/* ========== Global / Layout ========== */
+/* ========== Global Layout & Background ========== */
 
 body {
     max-width: 1160px;
     margin: 0 auto;
-    font-family: 'Nunito Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 16px;
-    color: #111827;
-    /* 新背景图 */
-    background-image: url("/static/images/misc/background.jpg");
+    font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1em;
+    color: #2b2132; /* 深紫灰正文色 */
+    background-image: url('/static/images/misc/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
 }
 
-/* 外层白色卡片效果：header + main + footer 都像浮在背景上 */
-header,
-main,
-footer {
-    background-color: rgba(255, 255, 255, 0.78);
-    backdrop-filter: blur(8px);
-}
-
-/* rules for the header */
+/* 让 header 盖在 main 之上，修复下拉被挡住的问题 */
 header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-left: 10px;
-    padding: 18px 20px;
+    padding: 18px 24px;
     border-radius: 18px 18px 0 0;
-    border: 1px solid rgba(15, 23, 42, 0.12);
-    border-bottom: none;
-    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.20);
+    position: relative;
+    z-index: 20;   /* 关键：比 main 高 */
 }
 
-/* 左侧 logo + 标题 */
+/* 顶部搜索栏 & 按钮区域上方那条粉色渐变条 */
+header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    height: 10px;
+    border-radius: 0 0 18px 18px;
+    background: linear-gradient(90deg, #f973a7, #fb7adf);
+    opacity: 0.95;
+}
+
+/* 右侧整体内容卡片（首页 & 分类页共用） */
+main {
+    display: flex;
+    margin: 25px 0 0 10px;
+    border-radius: 24px;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    border-left: 1px solid rgba(15, 23, 42, 0.08);
+    border-right: 1px solid rgba(15, 23, 42, 0.08);
+    background: radial-gradient(circle at top,
+                rgba(255, 255, 255, 0.96),
+                rgba(255, 255, 255, 0.85));
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 1.6em;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #24152f;   /* 深一点的紫色标题 */
+}
+
+/* 顶部左边 LOGO 文案 “TFL Books” */
+#siteTitle {
+    margin-left: 12px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.8rem;
+    letter-spacing: 0.03em;
+    color: #24152f;
+}
+
 #leftHeader {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 #leftHeader img {
-    height: 72px;
+    height: 70px;
     width: auto;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
 }
 
-/* 只给左上角标题用的花哨字体 */
-#siteTitle {
-    font-family: "DM Serif Display", "Times New Roman", serif;
-    font-size: 1.8rem;
-    letter-spacing: 0.03em;
-    color: #111827;
-}
-
-/* rules for the center header */
+/* ========== Header 中间：搜索框 & 下拉 ========== */
 
 #searchBoxForm {
-    margin-top: 0;
+    margin-top: 10px;
     display: flex;
     align-items: center;
-    gap: 8px;
 }
 
 #searchBox {
-    height: 34px;
-    padding: 0 10px;
+    height: 32px;
+    width: 260px;
+    padding: 4px 32px 4px 14px;
     border-radius: 999px;
-    border: 1px solid rgba(148, 163, 184, 0.7);
+    border: 1px solid rgba(15, 23, 42, 0.12);
     outline: none;
     font-family: inherit;
     font-size: 0.9rem;
-    min-width: 260px;
+    color: #2b2132;
+    background: rgba(255, 255, 255, 0.9);
 }
 
-#searchBox:focus {
-    border-color: #fb7185;
-    box-shadow: 0 0 0 2px rgba(251, 113, 133, 0.2);
+#searchBox::placeholder {
+    color: rgba(148, 163, 184, 0.95);
 }
 
 #searchIcon {
-    height: 30px;
-    width: 30px;
+    margin-left: -28px;
 }
 
-/* 下拉菜单 */
-
+/* 下拉按钮本体 */
 .dropdown {
     position: relative;
     display: inline-block;
-    margin-top: 16px;
+    margin-top: 18px;
+    margin-left: 40px;
 }
 
 .dropdownSelect {
-    width: 189px;
-    padding: 8px 12px;
-    border-radius: 999px;
-    background-image: linear-gradient(135deg, #fb7185, #ec4899);
+    width: 210px;
+    padding: 7px 5px;
+    background: linear-gradient(90deg, #f973a7, #fb7adf);
     color: white;
     text-align: center;
     display: block;
-    border: none;
+    border-radius: 999px;
+    font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.2px;
     font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    cursor: pointer;
-    box-shadow: 0 8px 18px rgba(236, 72, 153, 0.3);
+    box-shadow: 0 14px 28px rgba(248, 113, 171, 0.55);
 }
 
+/* 下拉内容：提高 z-index 保证在卡片上面 */
 .dropdownContent {
     display: none;
     position: absolute;
-    min-width: 200px;
-    padding: 8px 0 10px 0;
-    z-index: 10;
-    border-radius: 12px;
-    background-color: rgba(31, 41, 55, 0.96);
+    min-width: 210px;
+    padding: 8px 0;
+    top: 40px;
+    left: 0;
+    z-index: 50;   /* 关键：比 main 高很多 */
+    border-radius: 14px;
+    background: rgba(24, 24, 34, 0.96);
     text-align: center;
-    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.55);
-    margin-top: 6px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.6);
 }
 
 .dropdown:hover .dropdownContent {
@@ -130,124 +160,93 @@ header {
 
 .dropdownContent p {
     margin: 0;
-    padding: 6px 14px;
+    padding: 6px 16px;
 }
 
 .dropdownContent a {
-    color: #e5e7eb;
+    color: #f9e3ff;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
 }
 
 .dropdownContent a:hover {
-    color: #f9a8d4;
+    color: #f973a7;
 }
 
-/* rules for the right header */
+/* ========== Header 右侧：购物车 & 登录按钮 ========== */
 
 #rightHeader {
     display: flex;
     align-items: center;
-    gap: 14px;
+    margin-top: 8px;
 }
 
 #cartIcon img {
-    height: 26px;
+    height: 28px;
     width: auto;
 }
 
 #cartCount {
-    width: auto;
-    margin: 0;
-    font-size: 0.85rem;
-    color: #374151;
-}
-
-/* 通用按钮：登录、命令按钮等 */
-
-.loginButton,
-.commandButton,
-.submitButton {
-    background-image: linear-gradient(135deg, #fb7185, #ec4899);
-    color: white;
-    border-radius: 999px;
-    border: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    cursor: pointer;
-    box-shadow: 0 8px 18px rgba(236, 72, 153, 0.35);
+    width: 110px;
+    margin: 8px 0 0 10px;
+    font-size: 0.82rem;
+    color: #4b3a58;
 }
 
 .loginButton {
-    width: 70px;
-    height: 32px;
-    margin: 0;
+    background: #181827;
+    width: 64px;
+    height: 30px;
+    margin: 4px auto 0 4px;
     text-align: center;
-    line-height: 32px;
+    line-height: 30px;
+    border-radius: 999px;
+    font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.3px;
+    font-size: 0.8rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.6);
 }
 
 .loginButton a {
-    color: inherit;
+    color: #fdf2ff;
     text-decoration: none;
 }
 
 .loginButton a:hover {
-    color: #fef2f2;
-    text-decoration: none;
+    color: #f973a7;
 }
 
-.commandButton {
-    height: 30px;
-    width: 150px;
-    margin: 20px;
-    text-align: center;
-    line-height: 30px;
-    text-decoration: none;
-    display: block;
-}
-
-.submitButton {
-    height: 24px;
-    padding: 0 10px;
-    margin: 6px 0 0 4px;
-}
-
-/* rules for the footer */
+/* ========== Footer ========== */
 
 footer {
     display: flex;
     justify-content: space-between;
-    border: 1px solid rgba(15, 23, 42, 0.12);
-    border-radius: 0 0 18px 18px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
     margin-left: 10px;
-    padding: 14px 20px;
+    margin-top: 16px;
+    padding: 15px 24px;
     font-size: 0.8em;
-    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.22);
+    border-radius: 16px 16px 0 0;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(10px);
+    color: #4b3a58;
 }
 
 #footerLeft {
     display: flex;
     justify-content: space-between;
     margin: 5px 0 0 0;
-    width: 320px;
-    align-items: center;
-}
-
-#footerLeft p {
-    margin: 0;
-    color: #4b5563;
+    width: 340px;
 }
 
 #footerLeft a {
-    padding-top: 0;
-    color: #ec4899;
+    padding-top: 12px;
+    color: #f973a7;
     text-decoration: none;
-    font-size: 0.8rem;
 }
 
 #footerLeft a:hover {
-    text-decoration: underline;
+    color: #fb7adf;
 }
 
 #footerRight {
@@ -258,69 +257,70 @@ footer {
 }
 
 #footerRight img {
-    height: 20px;
-    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.4));
 }
 
 #notFoundMessage {
     color: #b91c1c;
 }
 
-/* Main container */
-
-main {
-    display: flex;
-    margin: 5px 0 0 10px;
-    border-top: 1px solid rgba(15, 23, 42, 0.12);
-    border-left: 1px solid rgba(15, 23, 42, 0.12);
-    border-right: 1px solid rgba(15, 23, 42, 0.12);
-    border-radius: 0 0 18px 18px;
-    padding-bottom: 20px;
+.commandButton {
+    height: 30px;
+    width: 150px;
+    border-radius: 999px;
+    margin: 20px;
+    text-align: center;
+    line-height: 30px;
+    background: linear-gradient(90deg, #f973a7, #fb7adf);
+    font-size: smaller;
+    color: white;
+    text-decoration: none;
+    display: block;
 }
 
-/* 全局 h1：正文用简洁字体，logo 已单独设 */
-
-h1 {
-    font-size: 1.6em;
-    font-weight: 700;
-    font-family: 'Nunito Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    color: #111827;
+.submitButton {
+    height: 20px;
+    border-radius: 999px;
+    border: none;
+    margin: 6px 0 0 4px;
+    text-align: center;
+    background: linear-gradient(90deg, #f973a7, #fb7adf);
+    color: white;
+    font-size: 0.78rem;
+    text-decoration: none;
 }
 
-/* ========== Index page ========== */
-
-/* 左侧 Welcome 文本 */
+/* ========== 首页：左侧欢迎文案 ========== */
 
 #mainLeft {
     width: 550px;
-    padding: 30px 0 30px 30px;
+    padding: 36px 40px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 16px;
     align-items: flex-start;
     text-align: left;
-    box-sizing: border-box;
 }
 
 #mainLeft p {
-    font-size: 1.05rem;
+    font-size: 0.98rem;
     line-height: 1.6;
-    color: #374151;
+    color: #473656;
 }
 
 .welcomeText {
     max-width: 420px;
 }
 
-/* 右侧 Category 容器：内层淡色卡片 */
+/* ========== 首页：右侧 category 区 ========== */
 
 #mainRight {
     max-width: 600px;
-    border-left: 1px solid rgba(148, 163, 184, 0.35);
-    padding: 30px 0;
-    background-color: rgba(249, 250, 251, 0.86);
+    border-left: 1px solid rgba(15, 23, 42, 0.06);
+    padding: 32px 0 32px 0;
+    background: rgba(248, 249, 255, 0.95);
     text-align: center;
-    box-shadow: inset 0 0 0 18px rgba(255, 255, 255, 0.6);
 }
 
 #categorySelections {
@@ -330,115 +330,112 @@ h1 {
 }
 
 .category {
-    width: 299px;
-    margin-top: 22px;
+    width: 260px;
+    margin-top: 24px;
     text-align: center;
     line-height: 40px;
-    color: #111827;
+    color: #7c3aed; /* 紫色文字 */
     font-weight: 600;
 }
 
 .category a {
     text-decoration: none;
-    color: #1d4ed8;
-    font-size: 0.95rem;
+    color: #7c3aed;
+    font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.92rem;
 }
 
 .category a:hover {
-    color: #ec4899;
+    color: #fb7adf;
 }
 
-/* 分类图标卡片 */
 .category img {
     width: 160px;
     height: auto;
-    border-radius: 22px;
-    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
-    background-color: white;
+    border-radius: 24px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.25);
 }
 
-/* ========== Category page ========== */
-
-/* 左侧分类按钮区域 */
+/* ========== 分类页左侧导航按钮 ========== */
 
 #catLeft {
-    width: 500px;
-    border-right: 1px solid rgba(148, 163, 184, 0.35);
+    width: 380px;
+    border-right: 1px solid rgba(15, 23, 42, 0.08);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 30px 0;
+    justify-content: flex-start;
+    padding-top: 40px;
+    gap: 18px;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.92),
+        rgba(248, 249, 255, 0.92)
+    );
 }
 
-/* 未选中分类按钮：渐变实心 */
-.notSelectedCategory {
-    height: 36px;
+.notSelectedCategory,
+.selectedCategory {
+    height: 34px;
     width: 190px;
     border-radius: 999px;
-    margin: 14px 0;
+    margin: 0;
     text-align: center;
-    line-height: 36px;
-    background-image: linear-gradient(135deg, #fb7185, #ec4899);
-    box-shadow: 0 10px 22px rgba(236, 72, 153, 0.35);
+    line-height: 34px;
+    font-size: 0.86rem;
+}
+
+/* 未选中的 category：填充渐变色 */
+.notSelectedCategory {
+    background: linear-gradient(90deg, #6366f1, #fb7adf);
+    box-shadow: 0 12px 30px rgba(99, 102, 241, 0.55);
 }
 
 .notSelectedCategory a {
     color: white;
-    font-size: 0.9rem;
+    font-size: 0.86rem;
     text-decoration: none;
-    font-weight: 600;
+    font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* 选中分类按钮：白底描边 */
+/* 选中的 category：白底 + 渐变描边 */
 .selectedCategory {
-    height: 36px;
-    width: 190px;
-    border-radius: 999px;
-    margin: 14px 0;
-    text-align: center;
-    line-height: 36px;
-    border: 2px solid #fb7185;
-    color: #fb7185;
-    font-size: 0.9rem;
+    border: 2px solid rgba(251, 122, 223, 0.85);
+    background: white;
+    color: #7c3aed;
     font-weight: 600;
-    background-color: rgba(255, 255, 255, 0.92);
 }
 
-/* 右侧书本列表区域：淡色内部卡片 + 两列布局 */
+/* ========== 分类页右侧书籍列表 ========== */
 
 #catRight {
-    padding: 24px 24px 30px 30px;
-    box-shadow: inset 0 0 0 18px rgba(255, 255, 255, 0.6);
+    padding: 26px 26px 32px 30px;
+    box-shadow: inset 0 0 0 20px rgba(248, 249, 255, 0.9);
     display: flex;
     flex-wrap: wrap;
-    background-color: rgba(249, 250, 251, 0.88);
+    background: rgba(248, 249, 255, 0.96);
 }
 
-/* 单本书卡片：保持 350px 宽，两列布局 */
 .book {
     width: 350px;
-    margin: 18px;
+    margin: 18px 18px 24px 18px;
     display: flex;
-    background-color: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
+    background-color: white;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
     border-radius: 18px;
-    padding: 16px 18px;
-    box-sizing: border-box;
+    padding: 18px 18px 20px 18px;
 }
 
-/* 书封面 */
 .book img {
-    width: 130px;
-    height: 190px;
+    width: 150px;
+    height: auto;
     object-fit: cover;
     border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.25);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.35);
 }
 
-/* 右侧书本信息块 */
 .bookDetailBox {
-    margin: 4px 0 0 18px;
+    margin: 4px 0 0 20px;
     display: flex;
     flex-direction: column;
     font-size: 0.875em;
@@ -446,45 +443,39 @@ h1 {
 
 .bookTitle {
     font-weight: 700;
-    color: #111827;
-    margin-bottom: 4px;
+    color: #24152f;
 }
 
 .bookDetail {
-    margin-top: 3px;
-    font-size: 0.86rem;
-    color: #4b5563;
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: #574364;
 }
 
 .bookPrice {
-    margin-top: 8px;
+    margin-top: 6px;
     font-weight: 700;
-    color: #ec4899;
+    color: #6366f1; /* 价格用蓝紫色 */
 }
 
-/* 书本操作按钮 */
+/* 按钮：统一渐变，和顶部 Select Category / nav 样式一致 */
 
 .actionButton {
-    height: 24px;
+    height: 22px;
     width: 110px;
     border-radius: 999px;
     margin-top: 6px;
-    line-height: 24px;
+    line-height: 22px;
     text-align: center;
-    background-image: linear-gradient(135deg, #fb7185, #ec4899);
+    background: linear-gradient(90deg, #6366f1, #fb7adf);
     color: white;
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
+    font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.2px;
+    font-size: 0.8rem;
     text-decoration: none;
-    box-shadow: 0 8px 16px rgba(236, 72, 153, 0.35);
-    display: inline-block;
-}
-
-.actionButton + .actionButton {
-    margin-left: 6px;
+    box-shadow: 0 10px 26px rgba(99, 102, 241, 0.6);
 }
 
 .actionButton:hover {
-    filter: brightness(1.05);
+    filter: brightness(1.08);
 }

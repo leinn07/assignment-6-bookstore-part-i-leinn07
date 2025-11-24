@@ -1,34 +1,43 @@
 /* Styles used on multiple pages */
 
-/* ===== Global layout & background ===== */
+/* ========== Global / Layout ========== */
 
 body {
     max-width: 1160px;
     margin: 0 auto;
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 1em;
-    color: #111111;
-    background-image: url('/static/images/misc/background.jpg');
+    font-family: 'Nunito Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 16px;
+    color: #111827;
+    /* 新背景图 */
+    background-image: url("/static/images/misc/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
 }
 
-/* ===== Header ===== */
+/* 外层白色卡片效果：header + main + footer 都像浮在背景上 */
+header,
+main,
+footer {
+    background-color: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(8px);
+}
 
+/* rules for the header */
 header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     margin-left: 10px;
-    padding: 18px 18px 10px 12px;
-    background-color: rgba(248, 250, 252, 0.90);   /* 半透明 */
-    backdrop-filter: blur(6px);
-    border-radius: 0 0 18px 18px;
-    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.22);
+    padding: 18px 20px;
+    border-radius: 18px 18px 0 0;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-bottom: none;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
 }
 
+/* 左侧 logo + 标题 */
 #leftHeader {
     display: flex;
     align-items: center;
@@ -36,78 +45,83 @@ header {
 }
 
 #leftHeader img {
-    height: 64px;
+    height: 72px;
     width: auto;
 }
 
+/* 只给左上角标题用的花哨字体 */
 #siteTitle {
-    margin: 0;
-    font-family: 'Averia Serif Libre', Georgia, 'Times New Roman', serif;
+    font-family: "DM Serif Display", "Times New Roman", serif;
     font-size: 1.8rem;
-    font-weight: 700;
-    color: #0b1f4a;
+    letter-spacing: 0.03em;
+    color: #111827;
 }
 
-/* center header: search + dropdown */
+/* rules for the center header */
 
 #searchBoxForm {
-    margin-top: 20px;
+    margin-top: 0;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
 }
 
 #searchBox {
-    height: 32px;
-    width: 260px;
-    padding: 4px 10px;
+    height: 34px;
+    padding: 0 10px;
     border-radius: 999px;
-    border: 1px solid rgba(148, 163, 184, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.7);
     outline: none;
-    font-size: 0.9em;
+    font-family: inherit;
+    font-size: 0.9rem;
+    min-width: 260px;
 }
 
 #searchBox:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+    border-color: #fb7185;
+    box-shadow: 0 0 0 2px rgba(251, 113, 133, 0.2);
 }
 
 #searchIcon {
-    height: 24px;
-    width: 24px;
+    height: 30px;
+    width: 30px;
 }
 
-/* dropdown */
+/* 下拉菜单 */
 
 .dropdown {
     position: relative;
     display: inline-block;
-    margin-top: 14px;
+    margin-top: 16px;
 }
 
 .dropdownSelect {
     width: 189px;
-    padding: 7px 5px;
-    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    padding: 8px 12px;
+    border-radius: 999px;
+    background-image: linear-gradient(135deg, #fb7185, #ec4899);
     color: white;
     text-align: center;
     display: block;
-    border-radius: 999px;
-    font-size: 0.9em;
-    letter-spacing: 0.3px;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
     cursor: pointer;
+    box-shadow: 0 8px 18px rgba(236, 72, 153, 0.3);
 }
 
 .dropdownContent {
     display: none;
     position: absolute;
     min-width: 200px;
-    padding-top: 5px;
-    z-index: 20;
+    padding: 8px 0 10px 0;
+    z-index: 10;
     border-radius: 12px;
-    background-color: #1d4ed8;
+    background-color: rgba(31, 41, 55, 0.96);
     text-align: center;
-    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.25);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.55);
+    margin-top: 6px;
 }
 
 .dropdown:hover .dropdownContent {
@@ -116,213 +130,240 @@ header {
 
 .dropdownContent p {
     margin: 0;
-    padding: 6px 0;
+    padding: 6px 14px;
 }
 
 .dropdownContent a {
-    color: white;
+    color: #e5e7eb;
     text-decoration: none;
-    font-size: 0.9em;
+    font-size: 0.9rem;
 }
 
 .dropdownContent a:hover {
-    color: #bfdbfe;
+    color: #f9a8d4;
 }
 
-/* right header */
+/* rules for the right header */
 
 #rightHeader {
     display: flex;
-    margin-top: 26px;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 }
 
 #cartIcon img {
-    height: 24px;
+    height: 26px;
     width: auto;
 }
 
-#cartCount{
-    width: 80px;
-    margin-top: 3px;
-    font-size: 0.85em;
-    color: #0f172a;
+#cartCount {
+    width: auto;
+    margin: 0;
+    font-size: 0.85rem;
+    color: #374151;
+}
+
+/* 通用按钮：登录、命令按钮等 */
+
+.loginButton,
+.commandButton,
+.submitButton {
+    background-image: linear-gradient(135deg, #fb7185, #ec4899);
+    color: white;
+    border-radius: 999px;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(236, 72, 153, 0.35);
 }
 
 .loginButton {
-    background-color: #020617;
     width: 70px;
     height: 32px;
-    margin-top: 0;
+    margin: 0;
     text-align: center;
     line-height: 32px;
-    border-radius: 999px;
-    font-size: 0.85em;
 }
 
-.loginButton a{
-    color: white;
+.loginButton a {
+    color: inherit;
     text-decoration: none;
 }
+
 .loginButton a:hover {
-    color: #bfdbfe;
+    color: #fef2f2;
+    text-decoration: none;
 }
 
-/* ===== Footer ===== */
+.commandButton {
+    height: 30px;
+    width: 150px;
+    margin: 20px;
+    text-align: center;
+    line-height: 30px;
+    text-decoration: none;
+    display: block;
+}
+
+.submitButton {
+    height: 24px;
+    padding: 0 10px;
+    margin: 6px 0 0 4px;
+}
+
+/* rules for the footer */
 
 footer {
     display: flex;
     justify-content: space-between;
-    border: 1px solid rgba(15, 23, 42, 0.10);
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 0 0 18px 18px;
     margin-left: 10px;
-    padding: 15px 20px;
+    padding: 14px 20px;
     font-size: 0.8em;
-    background-color: rgba(248, 250, 252, 0.92);
-    backdrop-filter: blur(6px);
-    border-radius: 18px 18px 0 0;
-    box-shadow: 0 -10px 28px rgba(15, 23, 42, 0.16);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.22);
 }
 
 #footerLeft {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    margin: 5px 0 0 0;
     width: 320px;
-    gap: 12px;
+    align-items: center;
 }
 
-#footerLeft a{
-    padding-top: 2px;
+#footerLeft p {
+    margin: 0;
+    color: #4b5563;
+}
+
+#footerLeft a {
+    padding-top: 0;
+    color: #ec4899;
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+#footerLeft a:hover {
+    text-decoration: underline;
 }
 
 #footerRight {
     display: flex;
     justify-content: space-between;
+    margin-right: 10px;
     width: 80px;
+}
+
+#footerRight img {
+    height: 20px;
+    width: auto;
 }
 
 #notFoundMessage {
     color: #b91c1c;
 }
 
-.commandButton {
-    height: 30px;
-    width: 150px;
-    border-radius: 8px;
-    margin: 20px;
-    text-align: center;
-    line-height: 30px;
-    background: linear-gradient(135deg, #2563eb, #4f46e5);
-    font-size: smaller;
-    color: white;
-    text-decoration: none;
-    display: block;
-}
-
-.submitButton {
-    height: 18px;
-    border-radius: 999px;
-    border: none;
-    margin: 6px 0 0 4px;
-    text-align: center;
-    background-color: #2563eb;
-    color: white;
-    font-size: 0.875em;
-    text-decoration: none;
-}
-
-/* ===== Main layout (outer “cards”) ===== */
+/* Main container */
 
 main {
     display: flex;
-    margin: 18px 0 18px 10px;
-    border-top: 1px solid rgba(15, 23, 42, 0.08);
-    border-left: 1px solid rgba(15, 23, 42, 0.08);
-    border-right: 1px solid rgba(15, 23, 42, 0.08);
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 24px;
-    background: radial-gradient(circle at top, rgba(248, 250, 252, 0.96), rgba(226, 232, 240, 0.85));
-    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
+    margin: 5px 0 0 10px;
+    border-top: 1px solid rgba(15, 23, 42, 0.12);
+    border-left: 1px solid rgba(15, 23, 42, 0.12);
+    border-right: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 0 0 18px 18px;
+    padding-bottom: 20px;
 }
 
-h1{
+/* 全局 h1：正文用简洁字体，logo 已单独设 */
+
+h1 {
     font-size: 1.6em;
-    font-family: 'Averia Serif Libre', Georgia, 'Times New Roman', serif;
     font-weight: 700;
-    color: #0b1f4a;
+    font-family: 'Nunito Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #111827;
 }
 
-/* ===== Index page ===== */
+/* ========== Index page ========== */
 
-/* 左侧欢迎文本 */
+/* 左侧 Welcome 文本 */
+
 #mainLeft {
     width: 550px;
-    padding: 28px 0 32px;
+    padding: 30px 0 30px 30px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
     text-align: left;
+    box-sizing: border-box;
 }
 
-#mainLeft p{
-    font-size: 110%;
-    line-height: 1.5;
-    color: #0f172a;
+#mainLeft p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #374151;
 }
 
 .welcomeText {
     max-width: 420px;
 }
 
-/* 右侧分类区 */
+/* 右侧 Category 容器：内层淡色卡片 */
+
 #mainRight {
     max-width: 600px;
-    border-left: 1px solid rgba(148, 163, 184, 0.4);
-    padding: 20px 0 28px;
-    background-color: rgba(239, 246, 255, 0.92);
+    border-left: 1px solid rgba(148, 163, 184, 0.35);
+    padding: 30px 0;
+    background-color: rgba(249, 250, 251, 0.86);
     text-align: center;
+    box-shadow: inset 0 0 0 18px rgba(255, 255, 255, 0.6);
 }
 
 #categorySelections {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .category {
     width: 299px;
-    margin-top: 20px;
+    margin-top: 22px;
     text-align: center;
     line-height: 40px;
-    color: #1d4ed8;
-    font-weight: bold;
+    color: #111827;
+    font-weight: 600;
 }
 
-.category a{
+.category a {
     text-decoration: none;
     color: #1d4ed8;
-    font-family: 'Averia Serif Libre', serif;
+    font-size: 0.95rem;
 }
 
 .category a:hover {
-    color: #0f766e;
+    color: #ec4899;
 }
 
+/* 分类图标卡片 */
 .category img {
     width: 160px;
     height: auto;
-    border-radius: 18px;
+    border-radius: 22px;
     box-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
+    background-color: white;
 }
 
-/* ===== Category page ===== */
+/* ========== Category page ========== */
 
-/* 左侧分类按钮 */
+/* 左侧分类按钮区域 */
 
 #catLeft {
     width: 500px;
-    border-right: 1px solid rgba(148, 163, 184, 0.4);
+    border-right: 1px solid rgba(148, 163, 184, 0.35);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -330,110 +371,120 @@ h1{
     padding: 30px 0;
 }
 
+/* 未选中分类按钮：渐变实心 */
 .notSelectedCategory {
-    height: 34px;
-    width: 160px;
+    height: 36px;
+    width: 190px;
     border-radius: 999px;
-    margin: 18px;
+    margin: 14px 0;
     text-align: center;
-    line-height: 34px;
-    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    line-height: 36px;
+    background-image: linear-gradient(135deg, #fb7185, #ec4899);
+    box-shadow: 0 10px 22px rgba(236, 72, 153, 0.35);
 }
 
-.notSelectedCategory a{
+.notSelectedCategory a {
     color: white;
-    font-size: 0.9em;
+    font-size: 0.9rem;
     text-decoration: none;
+    font-weight: 600;
 }
 
-.notSelectedCategory a:hover {
-    color: #bfdbfe;
-}
-
+/* 选中分类按钮：白底描边 */
 .selectedCategory {
-    height: 34px;
-    width: 160px;
-    border: 1px solid #2563eb;
+    height: 36px;
+    width: 190px;
     border-radius: 999px;
-    margin: 18px;
+    margin: 14px 0;
     text-align: center;
-    line-height: 34px;
-    color: #2563eb;
-    font-size: 0.9em;
-    background-color: rgba(248, 250, 252, 0.9);
+    line-height: 36px;
+    border: 2px solid #fb7185;
+    color: #fb7185;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.92);
 }
 
-/* 右侧书籍列表：保持老师的两列布局 */
+/* 右侧书本列表区域：淡色内部卡片 + 两列布局 */
 
 #catRight {
-    padding: 20px 20px 20px 30px;
-    box-shadow: inset 0 0 0 20px rgba(239, 246, 255, 0.9);
+    padding: 24px 24px 30px 30px;
+    box-shadow: inset 0 0 0 18px rgba(255, 255, 255, 0.6);
     display: flex;
-    flex-wrap: wrap;      /* 关键：允许换行 */
-    background-color: rgba(239, 246, 255, 0.92);
+    flex-wrap: wrap;
+    background-color: rgba(249, 250, 251, 0.88);
 }
 
-/* 每本书一张卡片：固定宽度，这样一行可以排两个 */
-
+/* 单本书卡片：保持 350px 宽，两列布局 */
 .book {
-    width: 350px;        /* 关键：不要用 100% / auto，否则会只显示一列 */
-    margin: 30px;
+    width: 350px;
+    margin: 18px;
     display: flex;
-    background-color: rgba(248, 250, 252, 0.98);
-    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
     border-radius: 18px;
+    padding: 16px 18px;
+    box-sizing: border-box;
 }
 
+/* 书封面 */
 .book img {
-    width: 150px;
-    height: auto;
+    width: 130px;
+    height: 190px;
     object-fit: cover;
-    border-radius: 14px;
-    margin: 16px 0 16px 16px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.25);
 }
 
-/* 书本信息区域 */
-
+/* 右侧书本信息块 */
 .bookDetailBox {
-    margin: 18px 18px 18px 20px;
+    margin: 4px 0 0 18px;
     display: flex;
     flex-direction: column;
     font-size: 0.875em;
 }
 
 .bookTitle {
-    font-weight: bold;
-    color: #0b1f4a;
+    font-weight: 700;
+    color: #111827;
     margin-bottom: 4px;
 }
 
 .bookDetail {
-    margin-top: 4px;
-    font-size: 0.9em;
-    color: #1e293b;
+    margin-top: 3px;
+    font-size: 0.86rem;
+    color: #4b5563;
 }
 
 .bookPrice {
     margin-top: 8px;
-    font-weight: bold;
-    color: #1d4ed8;
+    font-weight: 700;
+    color: #ec4899;
 }
 
-/* 按钮 */
+/* 书本操作按钮 */
 
 .actionButton {
-    height: 22px;
-    width: 90px;
+    height: 24px;
+    width: 110px;
     border-radius: 999px;
     margin-top: 6px;
-    line-height: 22px;
+    line-height: 24px;
     text-align: center;
-    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    background-image: linear-gradient(135deg, #fb7185, #ec4899);
     color: white;
-    font-size: 0.8em;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
     text-decoration: none;
+    box-shadow: 0 8px 16px rgba(236, 72, 153, 0.35);
+    display: inline-block;
+}
+
+.actionButton + .actionButton {
+    margin-left: 6px;
 }
 
 .actionButton:hover {
-    background: linear-gradient(135deg, #1d4ed8, #4338ca);
+    filter: brightness(1.05);
 }

@@ -69,10 +69,10 @@ h1 {
 /* 顶部左边 LOGO 文案 “TFL Books” */
 #siteTitle {
     margin-left: 12px;
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: 1.8rem;
-    letter-spacing: 0.03em;
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    letter-spacing: 0.5px;
     color: #24152f;
 }
 
@@ -83,9 +83,10 @@ h1 {
 }
 
 #leftHeader img {
-    height: 70px;
+    height: 100px;
     width: auto;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+    margin-right: 12px;
 }
 
 /* ========== Header 中间：搜索框 & 下拉 ========== */
@@ -309,6 +310,13 @@ footer {
     color: #473656;
 }
 
+#mainLeft h1 {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700;
+    font-size: 2em;
+    color: #2b1d35; 
+}
+
 .welcomeText {
     max-width: 420px;
 }
@@ -322,6 +330,14 @@ footer {
     background: rgba(248, 249, 255, 0.95);
     text-align: center;
 }
+
+#mainRight h1 {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700;
+    font-size: 2em;
+    color: #2b1d35;
+}
+
 
 #categorySelections {
     display: flex;
